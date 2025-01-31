@@ -278,3 +278,16 @@ main div img {
 #submit:hover {
     background-color: #5b002e;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff3b96;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #ffe9f6;
+}
