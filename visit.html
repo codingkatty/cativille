@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cativille</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/emblem.png">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index">Home</a></li>
+            <li><a href="history">History</a></li>
+            <li class="active"><a href="visit">Visit Us</a></li>
+        </ul>
+    </nav>
+
+    <main id="visit">
+        <p id="onlineMessage">The server is offline</p>
+        <div id="form">
+            <label for="name">Username:</label><br>
+            <input type="text" id="name" placeholder="themewmews">
+
+            <br><br>
+
+            <label for="nationality">(Server) Nationality:</label><br>
+            <select id="nationality">
+                <option value="">Select...</option>
+                <option value="MN">Munareich</option>
+                <option value="CP">Coppereich</option>
+                <option value="HL">Heliasreich</option>
+                <option value="SW">Switzerland</option>
+                <option value="DC">Draconreich</option>
+                <option value="SV">Solvanreich</option>
+                <option value=".">Other</option>
+            </select>
+
+            <br>
+
+            <button id="submit">Let's Go!</button>
+        </div>
+        <!-- ah well no time to cook up cool stuff -->
+        <div id="response" style="display: none;">
+            <h2>You're eligible to visit Cativille!</h2>
+            <p id="bestroutes"></p>
+            <img src="images/kart.png">
+        </div>
+        <div id="treenormal" style="display: none;">
+            <h2>You'll need to pay 1 cow to visit cativille!</h2>
+            <p>Thank you.</p>
+            <img src="images/sirmender.png">
+        </div>
+        <div id="chicken" style="display: none;">
+            <h2>omg pls come <3</h2>
+            <p>mrow, thanks for the chickens btw, was delicious</p>
+            <img src="images/farm.png">
+        </div>
+    </main>
+
+    <script>
+        fetch('https://api.mcstatus.io/v2/status/java/kayppn.aternos.me').then(response => response.json())
+            .then(data => {
+                document.getElementById('onlineMessage').innerHTML = "The server is &nbsp;" + data.version.name_html;
+                if(data.version.name_clean == "1.21.4") {
+                    document.getElementById('onlineMessage').innerHTML = "The server is &nbsp;<span><span style=\"color: #1a6e0b;\">● Online</span></span>";
+                }
+            });
+        
+        document.getElementById('submit').addEventListener('click', function() {
+            let name = document.getElementById('name').value;
+            let nationality = document.getElementById('nationality').value;
+
+            if (name == "" || nationality == "") {
+                alert("Please fill in all the fields!");
+                return;
+            }
+
+            if (name.toLowerCase() == "treenormal") {
+                document.getElementById('treenormal').style.display = 'block';
+                document.getElementById('response').style.display = 'none';
+                document.getElementById('chicken').style.display = 'none';
+            } else if (name.toLowerCase() == "tck10") {
+                document.getElementById('chicken').style.display = 'block';
+                document.getElementById('response').style.display = 'none';
+                document.getElementById('treenormal').style.display = 'none';
+            } else {
+                document.getElementById('response').style.display = 'block';
+                document.getElementById('treenormal').style.display = 'none';
+                document.getElementById('chicken').style.display = 'none';
+            }
+
+            if (nationality == "MN") {
+                document.getElementById('bestroutes').innerHTML = "Best route to Cativille is through the Main Base Portal! You'll get there in 20 blocks.";
+            } else if (nationality == "CP") {
+                document.getElementById('bestroutes').innerHTML = "Best route is to travel to Munareich *depends on your location.";
+            } else {
+                document.getElementById('bestroutes').innerHTML = "The best way to travel to Cativille is through teleportation (it may cost you a few wheat) or by nether roof portal (to be built).";
+            }
+        });
+    </script>
+</body>
+</html>

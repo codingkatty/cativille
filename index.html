@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cativille</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/emblem.png">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="active"><a href="index">Home</a></li>
+            <li><a href="history">History</a></li>
+            <li><a href="visit">Visit Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div id="title">
+            <p>The best cat-ruled cherry grove in Kayppn SMP:</p>
+            <h1>Cativille!</h1>
+        </div>
+    </header>
+
+    <main>
+        <div id="head">
+            <h2>Munareich</h2>
+            <p>Located in the hills of Munareich, right above the plains there stand a cherry grove. The Guardians of Fur(y) protect said grove, hence the decsendants naming it 'Cativille'. It is connected to the heart of Munareich (past village / now in construction parliment building) through minecart, with a giant bridge accross the Fisch Lake.</p>
+        </div>
+        <div id="telegram" onclick="redirect('https://t.me/cativille');">
+            <h2>Cativille News</h2>
+            <p>Learn the lastest news of Cativille through our Telegram channel!</p>
+            <i class="fa-solid fa-arrow-up-right-from-square" id="redirect" style="display: none;"></i>
+        </div>
+        <div id="emblem">
+            <img src="images/emblem.png">
+        </div>
+        <div id="spring">
+            <h2>Enjoy the nicest spring in Cativille with the water sourced from the underground dripstone caves.</h2>
+        </div>
+        <div id="area">
+            <h2>Resources</h2>
+            <p>Cativille has many valueable and cool resources, containing deep dark, gigantic dripstone caves and many ores, like diamond!</p>
+        </div>
+        <div id="mainbase">
+            <h2>Main Base, Munareich</h2>
+            <p>Transportation has never been so easy! Our portal is right next to the main base portal! Just hop in and, whaala! So why not <span style="color:#112479;">#visitcativille2025</span></p>
+        </div>
+    </main>
+
+    <script src="https://kit.fontawesome.com/e9a20e5732.js" crossorigin="anonymous"></script>
+    <script>
+        let spring = document.getElementById('spring');
+
+        function redirect(link) {
+            window.open(link, '_blank');
+        }
+
+        document.getElementById('telegram').addEventListener('mouseover', function() {
+            document.getElementById('redirect').style.display = 'block';
+        });
+
+        document.getElementById('telegram').addEventListener('mouseout', function() {
+            document.getElementById('redirect').style.display = 'none';
+        });
+
+        spring.addEventListener('mouseover', function() {
+            spring.querySelector('h2').style.backgroundColor = 'transparent';
+        });
+
+        spring.addEventListener('mouseout', function() {
+            spring.querySelector('h2').style.backgroundColor = '#ffffff5d';
+        });
+    </script>
+</body>
+</html>
